@@ -19,7 +19,7 @@ The News Agent API is a Node.js-based service using Express.js to fetch and proc
 ### Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/news-agent.git
+   git clone git@github.com:vlasiuk-anatolii/news-agent.git
    cd news-agent
    ```
 2. Install dependencies:
