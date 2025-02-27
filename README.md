@@ -14,6 +14,7 @@ The News Agent API is a Node.js-based service using Express.js to fetch and proc
 - NPM or Yarn
 - Pinecone API Key (for vector database)
 - OpenAI API Key (for LLM responses)
+- Kafka broker details for message queue processing
 
 ### Setup
 1. Clone the repository:
@@ -22,7 +23,7 @@ The News Agent API is a Node.js-based service using Express.js to fetch and proc
    cd news-agent
    ```
 2. Install dependencies:
-   ```sh.md
+   ```sh
    npm install
    ```
 3. Set up environment variables:
@@ -32,6 +33,12 @@ The News Agent API is a Node.js-based service using Express.js to fetch and proc
    PINECONE_API_KEY=your_pinecone_api_key
    OPENAI_API_KEY=your_openai_api_key
    
+   # Kafka Configuration
+   KAFKA_BROKER=your_broker
+   KAFKA_USERNAME=your_username
+   KAFKA_PASSWORD=your_password
+   KAFKA_TOPIC_NAME=news
+   KAFKA_GROUP_ID_PREFIX=test-task-
    ```
 4. Run the application:
    ```sh
@@ -56,10 +63,27 @@ Processes a query and returns relevant information.
     {
       "title": "AI Breakthroughs in 2025",
       "url": "https://example.com",
-      "date": "2025-02-26",
+      "date": "2025-02-26"
     }
   ]
 }
+```
+#### Testing:
+
+```
+curl -X POST https://news-agent-4.onrender.com/agent \
+  -H "Content-Type: application/json" \
+  -d '{"query": "Tell me the latest news about Justin Trudeau"}'
+
+```
+#### Posible queries:
+```
+query:
+- "Tell me the latest news about Justin Trudeau"
+- "Tell me something interesting that happened in the last month"
+- "What do you know about LA fires?"
+- "Summarize this article: [insert link]"
+
 ```
 
 ## Potential Improvements
