@@ -7,7 +7,7 @@ import { OpenAI } from 'openai';
 const PINECONE_API_KEY = process.env.PINECONE_API_KEY;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const INDEX_NAME = "news-articles";
-const EMBEDDING_MODEL = "text-embedding-ada-002";
+const EMBEDDING_MODEL = "text-embedding-3-small"//"text-embedding-ada-002";
 
 if (!PINECONE_API_KEY || !OPENAI_API_KEY) {
     throw new Error("Missing required API keys");
